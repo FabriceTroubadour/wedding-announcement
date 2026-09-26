@@ -1,0 +1,352 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background: #050505;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  perspective: 1400px;
+  background: radial-gradient(
+    ellipse at center,
+    #242424 0%,
+    #101010 45%,
+    #030303 100%
+  );
+}
+
+.content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  z-index: 1;
+}
+
+.content:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.08),
+    transparent 45%
+  );
+  pointer-events: none;
+}
+
+.content h1 {
+  position: relative;
+  margin: 0;
+  font-size: clamp(55px, 11vw, 160px);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  text-shadow: 0 5px 25px rgba(0, 0, 0, 0.7);
+}
+
+.content p {
+  position: relative;
+  margin: 10px 0 0;
+  font-size: clamp(14px, 2vw, 22px);
+  opacity: 0.6;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.curtain {
+  position: absolute;
+  top: 0;
+  width: 50.2%;
+  height: 100%;
+  min-height: 100%;
+  z-index: 10;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 20%,
+    100% 45%,
+    100% 70%,
+    100% 100%,
+    0 100%,
+    0 70%,
+    0 45%,
+    0 20%
+  );
+  transition:
+    transform 3.2s cubic-bezier(0.65, 0, 0.35, 1),
+    clip-path 3.2s cubic-bezier(0.65, 0, 0.35, 1),
+    filter 3.2s cubic-bezier(0.65, 0, 0.35, 1);
+  will-change: transform, clip-path;
+}
+
+.curtain.left {
+  left: 0;
+  transform-origin: left center;
+}
+
+.curtain.right {
+  right: 0;
+  transform-origin: right center;
+}
+
+.fabric {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    #050000 0,
+    #0d0000 2px,
+    #240000 4px,
+    #590000 6px,
+    #a60000 8px,
+    #ec0000 10px,
+    #ff1818 11px,
+    #c00000 12px,
+    #740000 14px,
+    #310000 17px,
+    #100000 20px,
+    #030000 23px,
+    #160000 26px,
+    #500000 29px,
+    #a90000 31px,
+    #ed0000 33px,
+    #ff1111 34px,
+    #a40000 36px,
+    #510000 39px,
+    #180000 42px,
+    #050000 46px
+  );
+  background-size: 100% 100%;
+  transition: background-size 3.2s cubic-bezier(0.65, 0, 0.35, 1);
+  transform: translateZ(0);
+  box-shadow:
+    inset 0 0 60px rgba(0, 0, 0, 0.65),
+    inset 0 -100px 100px rgba(0, 0, 0, 0.3);
+}
+
+.fabric:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.022) 0,
+    rgba(255, 255, 255, 0.022) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: 0.8;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.fabric:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 50, 50, 0.15) 0%,
+    rgba(255, 0, 0, 0.05) 18%,
+    transparent 45%,
+    rgba(0, 0, 0, 0.08) 70%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  pointer-events: none;
+}
+
+.pleats {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.65) 0,
+    transparent 5px,
+    rgba(255, 40, 40, 0.12) 9px,
+    transparent 14px,
+    rgba(0, 0, 0, 0.75) 22px,
+    transparent 29px,
+    rgba(255, 0, 0, 0.12) 34px,
+    transparent 40px,
+    rgba(0, 0, 0, 0.55) 46px
+  );
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.curtain.left:after,
+.curtain.right:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 15px;
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.curtain.left:after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.3),
+    transparent
+  );
+}
+
+.curtain.right:after {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.3),
+    transparent
+  );
+}
+
+.center-shadow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 28px;
+  height: 100%;
+  z-index: 11;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 0, 0, 0.85),
+    #000,
+    rgba(0, 0, 0, 0.85),
+    transparent
+  );
+  filter: blur(3px);
+  opacity: 0.9;
+  transition:
+    opacity 1.4s cubic-bezier(0.65, 0, 0.35, 1),
+    width 1.8s cubic-bezier(0.65, 0, 0.35, 1);
+  pointer-events: none;
+}
+
+.stage.open .curtain.left {
+  transform: translateX(-89%) rotateY(18deg) scaleX(0.48);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    96% 20%,
+    88% 45%,
+    75% 70%,
+    58% 100%,
+    0 100%,
+    0 70%,
+    0 45%,
+    0 20%
+  );
+  filter: brightness(0.72);
+}
+
+.stage.open .curtain.right {
+  transform: translateX(89%) rotateY(-18deg) scaleX(0.48);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 20%,
+    100% 45%,
+    100% 70%,
+    100% 100%,
+    42% 100%,
+    25% 70%,
+    12% 45%,
+    4% 20%
+  );
+  filter: brightness(0.72);
+}
+
+.stage.open .center-shadow {
+  width: 200px;
+  opacity: 0;
+}
+
+.stage.open .curtain .fabric {
+  background-size: 55% 100%;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(2px);
+  }
+}
+
+.curtain.left .pleats {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+.curtain.right .pleats {
+  animation: breathe 4.5s ease-in-out infinite reverse;
+}
+
+.controls {
+  position: fixed;
+  left: 50%;
+  bottom: 35px;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .stage.open .curtain.left {
+    transform: translateX(-86%) rotateY(14deg) scaleX(0.55);
+  }
+
+  .stage.open .curtain.right {
+    transform: translateX(86%) rotateY(-14deg) scaleX(0.55);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .curtain {
+    transition-duration: 0.5s;
+  }
+
+  .pleats {
+    animation: none !important;
+  }
+}
