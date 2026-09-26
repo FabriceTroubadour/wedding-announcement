@@ -1,0 +1,44 @@
+.full-screen-content {
+  width: 100%;
+  min-height: 100vh;
+}
+
+body {
+      font-family: 'Parisienne', cursive;
+      font-size: 48px;
+      text-align: center;
+      color: #FFD700; 
+      background-color: #000000;
+}
+
+.scratch-card-section {
+  width: 100%;
+  min-height: 100vh;
+  padding: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  gap: 32px;
+
+  .scroll-reveal {
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+  }
+
+  .scratch-card-widget {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 899px), (orientation: portrait) {
+  .scratch-card-section {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 24px;
+    gap: 24px;
+  }
+}

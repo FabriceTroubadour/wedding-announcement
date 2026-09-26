@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "framer-motion": "^13.4.4",
+    "next-scratchcard": "^0.0.4",
     "prettier": "^3.9.9",
     "pretty-quick": "^4.2.2",
     "react": "^19.2.8",
+    "react-confetti": "^6.4.0",
     "react-dom": "^19.2.8"
   },
   "devDependencies": {

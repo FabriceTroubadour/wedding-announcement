@@ -7,7 +7,9 @@ import './Video.scss'
 
 const VIDEO_END_TIME = 13
 
-const Video: React.FC<{ isCurtainOpen: boolean }> = ({ isCurtainOpen }) => {
+const Video: React.FC<{ isCurtainOpen: boolean }> = ({
+  isCurtainOpen,
+}) => {
   const { setIsVideoAtEnd } = useCurtain()
   const windowSize = useWindowSize()
   const videoRef = useRef<HTMLVideoElement>(null)

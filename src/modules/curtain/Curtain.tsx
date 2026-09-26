@@ -1,6 +1,6 @@
 import React from 'react'
 import './Curtain.scss'
-import Video from '../video/Video'
+import Video from '../../components/video/Video'
 import { useCurtain } from '../../contexts/CurtainContext'
 
 const Curtain: React.FC = () => {

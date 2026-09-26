@@ -4,6 +4,11 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  server: {
+    watch: {
+      ignored: ['**/*.~tmp'],
+    },
+  },
   plugins: [
     react(),
     babel({ presets: [reactCompilerPreset()] })

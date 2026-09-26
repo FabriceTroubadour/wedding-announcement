@@ -13,28 +13,79 @@ type CurtainContextValue = {
   setIsOpen: Dispatch<SetStateAction<boolean>>
   isVideoAtEnd: boolean
   setIsVideoAtEnd: Dispatch<SetStateAction<boolean>>
+  cardsCompleted: number
+  completeCard: (cardId: string) => void
 }
 
 const CurtainContext = createContext<CurtainContextValue | null>(null)
 
-export function CurtainProvider({ children }: { children: ReactNode }) {
+export function CurtainProvider({
+  children,
+}: {
+  children: ReactNode
+}) {
   const [isOpen, setIsOpen] = useState(false)
   const [isVideoAtEnd, setIsVideoAtEnd] = useState(false)
+  const [completedCardIds, setCompletedCardIds] = useState<Set<string>>(
+    () => new Set(),
+  )
+  const cardsCompleted = completedCardIds.size
+
+  const completeCard = (cardId: string) => {
+    setCompletedCardIds((current) => {
+      if (current.has(cardId)) {
+        return current
+      }
+
+      return new Set(current).add(cardId)
+    })
+  }
 
   useEffect(() => {
     const html = document.documentElement
     const previousOverflowY = html.style.overflowY
+    const canLeaveCurtain = isOpen && isVideoAtEnd
 
-    html.style.overflowY = isOpen && isVideoAtEnd ? 'auto' : 'hidden'
+    html.style.overflowY = canLeaveCurtain ? 'auto' : 'hidden'
+
+    const scratchSection = document.querySelector<HTMLElement>(
+      '.scratch-card-section',
+    )
+
+    const clampToScratchSection = () => {
+      if (!scratchSection || cardsCompleted === 3) {
+        return
+      }
+
+      const sectionTop = scratchSection.getBoundingClientRect().top + window.scrollY
+      const sectionBottom = sectionTop + scratchSection.offsetHeight
+      const maxScrollY = Math.max(0, sectionBottom - window.innerHeight)
+
+      if (window.scrollY > maxScrollY) {
+        window.scrollTo(0, maxScrollY)
+      }
+    }
+
+    if (canLeaveCurtain && cardsCompleted !== 3) {
+      window.addEventListener('scroll', clampToScratchSection, { passive: true })
+    }
 
     return () => {
+      window.removeEventListener('scroll', clampToScratchSection)
       html.style.overflowY = previousOverflowY
     }
-  }, [isOpen, isVideoAtEnd])
+  }, [isOpen, isVideoAtEnd, cardsCompleted])
 
   return (
     <CurtainContext.Provider
-      value={{ isOpen, setIsOpen, isVideoAtEnd, setIsVideoAtEnd }}
+      value={{
+        isOpen,
+        setIsOpen,
+        isVideoAtEnd,
+        setIsVideoAtEnd,
+        cardsCompleted,
+        completeCard,
+      }}
     >
       {children}
     </CurtainContext.Provider>

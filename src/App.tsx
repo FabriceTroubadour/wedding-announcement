@@ -1,21 +1,19 @@
-import './App.css'
-import Curtain from './components/curtain/Curtain'
-import { ScrollReveal } from './components/scrollReveal/ScrollReveal'
+import './App.scss'
+import ConfettiFullScreen from './components/confetti/ConfettiFullScreen'
+import Curtain from './modules/curtain/Curtain'
+import ScratchCards from './modules/scratchCards/ScratchCards'
 
 function App() {
   return (
     <>
-      <Curtain />
-      <ScrollReveal
-        childComponent={
-          <div>
-            <h2>Animate on Scroll with Framer Motion</h2>
-            <p>
-              This reveals gracefully when 20% of it rolls into the viewport.
-            </p>
-          </div>
-        }
-      />
+      <ConfettiFullScreen />
+      <div className="full-screen-content">
+        <Curtain />
+      </div>
+
+      <div className="full-screen-content scratch-card-section">
+        <ScratchCards />
+      </div>
     </>
   )
 }
