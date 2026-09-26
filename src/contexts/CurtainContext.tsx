@@ -33,7 +33,9 @@ export function CurtainProvider({ children }: { children: ReactNode }) {
   }, [isOpen, isVideoAtEnd])
 
   return (
-    <CurtainContext.Provider value={{ isOpen, setIsOpen, isVideoAtEnd, setIsVideoAtEnd }}>
+    <CurtainContext.Provider
+      value={{ isOpen, setIsOpen, isVideoAtEnd, setIsVideoAtEnd }}
+    >
       {children}
     </CurtainContext.Provider>
   )
