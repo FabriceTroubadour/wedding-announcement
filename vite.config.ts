@@ -11,6 +11,7 @@ export default defineConfig({
       interval: 1000,
     },
   },
+  base: '/wedding-announcement/',
   plugins: [
     react(),
     babel({ presets: [reactCompilerPreset()] })
