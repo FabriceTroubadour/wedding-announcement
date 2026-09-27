@@ -23,9 +23,9 @@ const ScratchCardWidget: React.FC<{ content: React.ReactNode, onComplete?: () =>
       <ScratchCard
         width={cardWidth}
         height={cardHeight}
-        finishPercent={isWideLayout ? 95 : 70}
+        finishPercent={95}
         image={GoldenTicket}
-        brushSize={isWideLayout ? 75 : 25}
+        brushSize={75}
         onComplete={onComplete}
       >
         {content}
