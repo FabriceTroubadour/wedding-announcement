@@ -78,7 +78,7 @@ const Video: React.FC<{ isCurtainOpen: boolean }> = ({
         onLoadedMetadata={handleLoadedMetadata}
         width="100%"
         muted
-        // playsInline
+        playsInline
         autoPlay={isCurtainOpen}
       >
         <source src={currentPath} type="video/mp4" />
