@@ -11,7 +11,11 @@ const ScratchCardWidget: React.FC<{ content: React.ReactNode, onComplete?: () =>
   const availableWidth = isWideLayout
     ? (windowWidth - 128) / 3
     : windowWidth - 48
-  const cardWidth = Math.max(1, Math.min(MAX_CARD_WIDTH, availableWidth))
+  const responsiveScale = isWideLayout ? 1 : 0.95
+  const cardWidth = Math.max(
+    1,
+    Math.min(MAX_CARD_WIDTH, availableWidth * responsiveScale),
+  )
   const cardHeight = Math.round(cardWidth / LANDSCAPE_CARD_ASPECT_RATIO)
 
   return (

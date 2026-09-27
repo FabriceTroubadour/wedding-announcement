@@ -36,7 +36,8 @@ const ScratchCards = () => {
           exit={{ opacity: 0 }}
           transition={transition}
         >
-          <h2 className="scratch-card-heading">Scratch the cards</h2>
+          <h2 className="scratch-card-heading">Reveal the date</h2>
+          <h3 className="scratch-card-heading-small">Scratch the cards</h3>
           <ScrollReveal
             childComponent={
               <div>
