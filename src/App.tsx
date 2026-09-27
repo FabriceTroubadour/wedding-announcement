@@ -14,7 +14,7 @@ function App() {
       </div>
 
       <div
-        className="full-screen-content scratch-card-section"
+        className="scratch-card-section"
         style={
           {
             '--scratch-card-background': `url("${goldenScratchImage}")`,

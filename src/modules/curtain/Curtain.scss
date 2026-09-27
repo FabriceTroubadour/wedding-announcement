@@ -228,6 +228,54 @@
   pointer-events: none;
 }
 
+.curtain-toggle {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(24px, 6vh, 48px);
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 8px 15px;
+  border: 1px solid rgba(255, 215, 0, 0.8);
+  border-radius: 999px;
+  transform: translateX(-50%);
+  background: rgba(8, 4, 4, 0.82);
+  color: #ffe9a3;
+  font: 600 11px/1.2 Georgia, serif;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.45);
+  opacity: 0.7;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease,
+    opacity 700ms ease;
+}
+
+.curtain-toggle.dimmed {
+  opacity: 0.1;
+}
+
+.curtain-toggle:hover {
+  background: rgba(255, 215, 0, 0.16);
+  color: #fff8e6;
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.curtain-toggle:focus-visible {
+  outline: 2px solid #fff8e6;
+  outline-offset: 4px;
+}
+
+.curtain-toggle span {
+  color: #ffd700;
+  font-size: 14px;
+}
+
 .stage.open .curtain.left {
   transform: translateX(-89%) rotateY(18deg) scaleX(0.48);
   clip-path: polygon(
@@ -301,6 +349,13 @@
 }
 
 @media (max-width: 600px) {
+  .curtain-toggle {
+    bottom: 24px;
+    min-height: 34px;
+    padding: 7px 13px;
+    font-size: 11px;
+  }
+
   .stage.open .curtain.left {
     transform: translateX(-86%) rotateY(14deg) scaleX(0.55);
   }

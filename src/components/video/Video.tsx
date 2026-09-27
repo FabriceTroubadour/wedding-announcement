@@ -10,7 +10,7 @@ const VIDEO_END_TIME = 13
 const Video: React.FC<{ isCurtainOpen: boolean }> = ({
   isCurtainOpen,
 }) => {
-  const { setIsVideoAtEnd } = useCurtain()
+  const { setIsVideoAtEnd, setVideoTime } = useCurtain()
   const windowSize = useWindowSize()
   const videoRef = useRef<HTMLVideoElement>(null)
   const [currentTime, setCurrentTime] = useState(0)
@@ -34,6 +34,7 @@ const Video: React.FC<{ isCurtainOpen: boolean }> = ({
 
       const videoTime = Math.min(video.currentTime, VIDEO_END_TIME)
       setCurrentTime(videoTime)
+      setVideoTime(videoTime)
       setIsVideoAtEnd(videoTime >= VIDEO_END_TIME)
     }
   }
@@ -43,6 +44,7 @@ const Video: React.FC<{ isCurtainOpen: boolean }> = ({
   ) => {
     const video = event.currentTarget
     video.currentTime = Math.min(currentTime, VIDEO_END_TIME)
+    setVideoTime(video.currentTime)
     setIsVideoAtEnd(video.currentTime >= VIDEO_END_TIME)
 
     if (video.currentTime >= VIDEO_END_TIME || !isCurtainOpen) {

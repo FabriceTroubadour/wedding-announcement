@@ -4,22 +4,14 @@ import Video from '../../components/video/Video'
 import { useCurtain } from '../../contexts/CurtainContext'
 
 const Curtain: React.FC = () => {
-  const { isOpen, setIsOpen } = useCurtain()
-
-  const handleWheel = (event: React.WheelEvent<HTMLDivElement>) => {
-    if (event.deltaY > 0) {
-      setIsOpen(true)
-    } else if (event.deltaY < 0 && window.scrollY === 0) {
-      setIsOpen(false)
-    }
-  }
+  const { isOpen, setIsOpen, videoTime } = useCurtain()
+  const isButtonDimmed = videoTime >= 1 && videoTime < 12
 
   return (
     <>
       <div
         className={`stage ${isOpen ? 'open' : ''}`}
         id="stage"
-        onWheel={handleWheel}
       >
         <div className="content">
           <Video isCurtainOpen={isOpen} />
@@ -33,6 +25,18 @@ const Curtain: React.FC = () => {
           <div className="pleats"></div>
         </div>
         <div className="center-shadow"></div>
+        <button
+          className={`curtain-toggle ${isButtonDimmed ? 'dimmed' : ''}`}
+          type="button"
+          aria-expanded={isOpen}
+          aria-controls="stage"
+          style={{ opacity: isButtonDimmed ? 0.1 : 1 }}
+          onClick={() => setIsOpen((current) => !current)}
+        >
+          <span aria-hidden="true">✦</span>
+          {isOpen ? 'Close' : 'Open'}
+          <span aria-hidden="true">✦</span>
+        </button>
       </div>
     </>
   )

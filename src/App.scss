@@ -5,6 +5,7 @@
 html,
 body {
   width: 100%;
+  max-width: 100%;
   min-height: 100%;
   margin: 0;
   scrollbar-width: none;
@@ -25,7 +26,7 @@ body {
 
 .full-screen-content {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 .dress-code-image {
@@ -99,11 +100,31 @@ p, h1, h2 {
     background: transparent;
     display: flex;
     justify-content: center;
+
+    > div {
+      width: 100%;
+    }
   }
 
   .scratch-card-widget {
     max-width: 100%;
     box-shadow: 0 0 14px rgba(255, 255, 255, 0.35);
+
+    > div,
+    > div > div {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    > div {
+      aspect-ratio: 1.45;
+      height: auto !important;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 
@@ -143,32 +164,207 @@ p, h1, h2 {
   }
 }
 
-@media (max-width: 899px), (orientation: portrait) {
+@media (max-width: 899px) and (orientation: portrait) {
   .scratch-card-date {
     grid-template-columns: minmax(0, 1fr);
     padding: 24px; 
 
-      gap: 18px;
+    gap: 18px;
 
-      .scratch-card-heading {
-        font-size: 40px;
-      }
-
-      .scratch-card-heading-small {
-        margin-top: -8px;
-      }
-  }
-}
-
-@media (max-width: 600px) {
-  .invitation-section {
-    h1 {
+    .scratch-card-heading {
       font-size: 40px;
     }
 
+    .scratch-card-heading-small {
+      margin-top: -8px;
+    }
+  }
+}
+
+@media (max-width: 899px) and (orientation: landscape) {
+  .scratch-card-date {
+    min-height: 100svh;
+    padding: 16px 24px;
+    gap: 10px;
+
+    .scratch-card-heading {
+      font-size: 30px
+    }
+
+    .scratch-card-heading-small {
+      margin-top: -6px;
+      font-size: 20px
+    }
+
+    .scratch-card-widget {
+      width: 100%;
+    }
+  }
+
+}
+
+@media (max-width: 500px) and (orientation: portrait) {
+  .invitation-section {
+    padding: 24px 20px;
+    gap: 12px;
+
+    .invitation-eyebrow,
+    .invitation-date,
+    .invitation-copy {
+      font-size: 22px;
+      letter-spacing: 0.06em;
+    }
+
+    .invitation-title,
+    h1 {
+      font-size: 50px;
+      letter-spacing: 0.04em;
+    }
+  }
+}
+
+@media (max-width: 500px) and (orientation: landscape) {
+  .invitation-section {
+    padding: 8px 20px;
+    gap: 4px;
+
+    .invitation-eyebrow,
+    .invitation-date,
+    .invitation-copy {
+      font-size: 10px;
+      letter-spacing: 0.04em;
+    }
+
+    .invitation-title,
+    h1 {
+      font-size: 18px;
+      letter-spacing: 0.02em;
+    }
+  }
+}
+
+@media (min-width: 501px) and (max-width: 700px) and (orientation: portrait) {
+  .invitation-section {
+    .invitation-eyebrow,
+    .invitation-date,
+    .invitation-copy {
+      font-size: 26px;
+    }
+
+    .invitation-title,
+    h1 {
+      font-size: 42px;
+    }
+  }
+}
+
+@media (min-width: 501px) and (max-width: 700px) and (orientation: landscape) {
+  .invitation-section {
+    padding: 8px 20px;
+    gap: 4px;
+
+    .invitation-eyebrow,
+    .invitation-date,
+    .invitation-copy {
+      font-size: 15px;
+    }
+
+    .invitation-title,
+    h1 {
+      font-size: 28px;
+    }
+  }
+}
+
+@media (min-width: 701px) and (max-width: 900px) and (orientation: portrait) {
+  .invitation-section {
+    .invitation-eyebrow,
+    .invitation-date,
+    .invitation-copy {
+      font-size: 30px;
+    }
+
+    .invitation-title,
+    h1 {
+      font-size: 46px;
+    }
+  }
+}
+
+@media (min-width: 701px) and (max-width: 900px) and (orientation: landscape) {
+  .invitation-section {
+    padding: 12px 24px;
+    gap: 6px;
+
+    .invitation-eyebrow,
     .invitation-date,
     .invitation-copy {
       font-size: 18px;
+    }
+
+    .invitation-title,
+    h1 {
+      font-size: 33px;
+    }
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1100px) and (orientation: portrait) {
+  .invitation-section {
+    .invitation-eyebrow,
+    .invitation-date,
+    .invitation-copy {
+      font-size: 34px;
+    }
+
+    .invitation-title,
+    h1 {
+      font-size: 52px;
+    }
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1100px) and (orientation: landscape) {
+  .invitation-section {
+    .invitation-eyebrow,
+    .invitation-date,
+    .invitation-copy {
+      font-size: 18px;
+    }
+
+    .invitation-title,
+    h1 {
+      font-size: 33px;
+    }
+  }
+}
+
+@media (min-width: 1101px) and (orientation: portrait) {
+  .invitation-section {
+    .invitation-eyebrow,
+    .invitation-date,
+    .invitation-copy {
+      font-size: 40px;
+    }
+
+    .invitation-title,
+    h1 {
+      font-size: 60px;
+    }
+  }
+}
+
+@media (min-width: 1101px) and (orientation: landscape) {
+  .invitation-section {
+    .invitation-eyebrow,
+    .invitation-date,
+    .invitation-copy {
+      font-size: 30px;
+    }
+
+    .invitation-title,
+    h1 {
+      font-size: 54px;
     }
   }
 }

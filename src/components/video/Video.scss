@@ -5,3 +5,12 @@
   justify-content: center;
   align-items: center;
 }
+
+.video-container video {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}

@@ -11,6 +11,8 @@ import {
 type CurtainContextValue = {
   isOpen: boolean
   setIsOpen: Dispatch<SetStateAction<boolean>>
+  videoTime: number
+  setVideoTime: Dispatch<SetStateAction<number>>
   isVideoAtEnd: boolean
   setIsVideoAtEnd: Dispatch<SetStateAction<boolean>>
   cardsCompleted: number
@@ -25,6 +27,7 @@ export function CurtainProvider({
   children: ReactNode
 }) {
   const [isOpen, setIsOpen] = useState(false)
+  const [videoTime, setVideoTime] = useState(0)
   const [isVideoAtEnd, setIsVideoAtEnd] = useState(false)
   const [completedCardIds, setCompletedCardIds] = useState<Set<string>>(
     () => new Set(),
@@ -82,6 +85,8 @@ export function CurtainProvider({
       value={{
         isOpen,
         setIsOpen,
+        videoTime,
+        setVideoTime,
         isVideoAtEnd,
         setIsVideoAtEnd,
         cardsCompleted,

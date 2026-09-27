@@ -7,6 +7,12 @@
 
   p {
     margin: 0;
-  font-size: 80px;
+    font-size: 80px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .centered-text p {
+    font-size: 70px;
   }
 }
