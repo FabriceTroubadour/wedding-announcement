@@ -1,24 +1,77 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #050505;
+    text-align: center;
+}
+
 .full-screen-content {
   width: 100%;
   min-height: 100vh;
 }
 
-body {
-      font-family: 'Parisienne', cursive;
-      font-size: 48px;
-      text-align: center;
-      color: #FFD700; 
-      background-color: #000000;
+p {
+    font-size: 60px;
+    background-color: #000000;
+  }
+
+p, h1, h2 {
+  font-family: 'Parisienne', cursive;
+  color: #FFD700; 
 }
 
 .scratch-card-section {
+  position: relative;
   width: 100%;
   min-height: 100vh;
+  min-height: 100svh;
+  display: block;
+  padding: 0;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    var(--scratch-card-background);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.scratch-card-date {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
   padding: 32px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: center;
   gap: 32px;
+
+  .scratch-card-heading {
+    grid-column: 1 / -1;
+    margin: 0;
+    color: #fff8e6;
+    font-family: 'Parisienne', cursive;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1.1;
+  }
 
   .scroll-reveal {
     width: 100%;
@@ -33,12 +86,69 @@ body {
   .scratch-card-widget {
     max-width: 100%;
   }
+
+}
+
+.invitation-section {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  background: #10100e;
+  border-top: 1px solid rgba(255, 215, 0, 0.35);
+  color: #fff8e6;
+
+  p {
+    background: transparent;
+  }
+
+  .invitation-eyebrow {
+    margin: 0;
+    color: #ffd700;
+    font-family: 'Parisienne', cursive;
+    font-size: 30px;
+    letter-spacing: 0.2em;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 52px;
+    line-height: 1.1;
+  }
+
+  .invitation-date,
+  .invitation-copy {
+    margin: 0;
+    font-size: 22px;
+  }
+
+  .invitation-date {
+    color: #ffd700;
+  }
 }
 
 @media (max-width: 899px), (orientation: portrait) {
-  .scratch-card-section {
+  .scratch-card-date {
     grid-template-columns: minmax(0, 1fr);
     padding: 24px;
     gap: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .invitation-section {
+    h1 {
+      font-size: 40px;
+    }
+
+    .invitation-date,
+    .invitation-copy {
+      font-size: 18px;
+    }
   }
 }

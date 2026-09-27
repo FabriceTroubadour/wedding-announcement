@@ -5,18 +5,22 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build:tailwind": "npx @tailwindcss/cli -i ./src/tailwind.css -o ./public/tailwind.css",
+    "dev:tailwind": "npm run build:tailwind -- --watch",
+    "build": "npm run build:tailwind && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tailwindcss/cli": "^4.3.3",
     "framer-motion": "^13.4.4",
     "next-scratchcard": "^0.0.4",
     "prettier": "^3.9.9",
     "pretty-quick": "^4.2.2",
     "react": "^19.2.8",
     "react-confetti": "^6.4.0",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",

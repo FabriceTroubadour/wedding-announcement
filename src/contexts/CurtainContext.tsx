@@ -44,9 +44,10 @@ export function CurtainProvider({
   useEffect(() => {
     const html = document.documentElement
     const previousOverflowY = html.style.overflowY
-    const canLeaveCurtain = isOpen && isVideoAtEnd
+    const canScrollPage = isOpen && isVideoAtEnd
+    const shouldClampAtScratchSection = canScrollPage && cardsCompleted < 3
 
-    html.style.overflowY = canLeaveCurtain ? 'auto' : 'hidden'
+    html.style.overflowY = canScrollPage ? 'auto' : 'hidden'
 
     const scratchSection = document.querySelector<HTMLElement>(
       '.scratch-card-section',
@@ -66,7 +67,7 @@ export function CurtainProvider({
       }
     }
 
-    if (canLeaveCurtain && cardsCompleted !== 3) {
+    if (shouldClampAtScratchSection) {
       window.addEventListener('scroll', clampToScratchSection, { passive: true })
     }
 
