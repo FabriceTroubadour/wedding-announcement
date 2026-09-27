@@ -84,41 +84,38 @@
 
 .curtain.left {
   left: 0;
-  transform-origin: left center;
+  transform-origin: left top;
 }
 
 .curtain.right {
   right: 0;
-  transform-origin: right center;
+  transform-origin: right top;
 }
 
 .fabric {
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-    90deg,
-    #050000 0,
-    #0d0000 2px,
-    #240000 4px,
-    #590000 6px,
-    #a60000 8px,
-    #ec0000 10px,
-    #ff1818 11px,
-    #c00000 12px,
-    #740000 14px,
-    #310000 17px,
-    #100000 20px,
-    #030000 23px,
-    #160000 26px,
-    #500000 29px,
-    #a90000 31px,
-    #ed0000 33px,
-    #ff1111 34px,
-    #a40000 36px,
-    #510000 39px,
-    #180000 42px,
-    #050000 46px
-  );
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 105, 105, 0.14),
+      transparent 16%,
+      rgba(0, 0, 0, 0.12) 70%,
+      rgba(0, 0, 0, 0.55)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      #210003 0,
+      #4a0006 12px,
+      #8b0710 25px,
+      #b21a22 34px,
+      #70040b 48px,
+      #2b0004 63px,
+      #570008 78px,
+      #a3131c 94px,
+      #390005 112px,
+      #1d0002 128px
+    );
   background-size: 100% 100%;
   transition: background-size 3.2s cubic-bezier(0.65, 0, 0.35, 1);
   transform: translateZ(0);
@@ -132,14 +129,16 @@
   position: absolute;
   inset: 0;
   background: repeating-linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0.022) 0,
-    rgba(255, 255, 255, 0.022) 1px,
-    transparent 1px,
-    transparent 3px
+    90deg,
+    transparent 0,
+    rgba(255, 95, 95, 0.12) 18px,
+    transparent 36px,
+    rgba(0, 0, 0, 0.34) 58px,
+    rgba(0, 0, 0, 0.08) 72px,
+    transparent 94px
   );
-  opacity: 0.8;
-  mix-blend-mode: screen;
+  opacity: 0.85;
+  mix-blend-mode: soft-light;
   pointer-events: none;
 }
 
@@ -163,15 +162,12 @@
   inset: 0;
   background: repeating-linear-gradient(
     90deg,
-    rgba(0, 0, 0, 0.65) 0,
-    transparent 5px,
-    rgba(255, 40, 40, 0.12) 9px,
-    transparent 14px,
-    rgba(0, 0, 0, 0.75) 22px,
-    transparent 29px,
-    rgba(255, 0, 0, 0.12) 34px,
-    transparent 40px,
-    rgba(0, 0, 0, 0.55) 46px
+    rgba(0, 0, 0, 0.28) 0,
+    transparent 18px,
+    rgba(255, 90, 90, 0.12) 38px,
+    transparent 56px,
+    rgba(0, 0, 0, 0.38) 82px,
+    transparent 112px
   );
   mix-blend-mode: multiply;
   pointer-events: none;

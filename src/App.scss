@@ -28,6 +28,14 @@ body {
   min-height: 100vh;
 }
 
+.dress-code-image {
+  display: block;
+  max-width: 95%;
+  max-height: 95vh;
+  max-height: 95svh;
+  object-fit: contain;
+}
+
 p {
     font-size: 60px;
     background-color: #000000;
@@ -108,7 +116,7 @@ p, h1, h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 16px;
+    gap: 40px;
   background: #10100e;
   border-top: 1px solid rgba(255, 215, 0, 0.35);
   color: #fff8e6;
@@ -117,24 +125,17 @@ p, h1, h2 {
     background: transparent;
   }
 
-  .invitation-eyebrow {
-    margin: 0;
-    color: #ffd700;
-    font-family: 'Parisienne', cursive;
-    font-size: 30px;
+  .invitation-eyebrow, .invitation-date, .invitation-copy, .invitation-title {
+    margin: 20px;
+    font-size: 65px;
     letter-spacing: 0.2em;
+    line-height: 1.1;
   }
 
   h1 {
     margin: 0;
     font-size: 52px;
     line-height: 1.1;
-  }
-
-  .invitation-date,
-  .invitation-copy {
-    margin: 0;
-    font-size: 22px;
   }
 
   .invitation-date {

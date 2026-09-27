@@ -2,6 +2,7 @@ import './App.scss'
 import ConfettiFullScreen from './components/confetti/ConfettiFullScreen'
 import goldenScratchImage from './media/images/golden-scratch.jpg'
 import Curtain from './modules/curtain/Curtain'
+import DressCode from './modules/dressCode/DressCode'
 import ScratchCards from './modules/scratchCards/ScratchCards'
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
       >
         <ScratchCards />
       </div>
+
+      <DressCode />
     </>
   )
 }

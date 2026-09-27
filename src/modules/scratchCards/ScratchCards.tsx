@@ -24,12 +24,14 @@ const ScratchCards = () => {
           transition={transition}
           aria-labelledby="invitation-title"
         >
-          <p className="invitation-eyebrow text-white">SAVE THE DATE</p>
-          <h1 id="invitation-title">You're invited</h1>
+          <p className="invitation-eyebrow text-white">Save the date</p>
+          <h1 id="invitation-title" className="invitation-title">
+            You're invited
+          </h1>
           <p className="invitation-date">24 December 2027</p>
           <p className="invitation-copy">Join us for a day of celebration.</p>
         </motion.section>
-      ) : (
+      ) : ( 
         <motion.div
           key="scratch-cards"
           className="scratch-card-date"

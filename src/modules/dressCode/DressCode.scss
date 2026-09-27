@@ -1,0 +1,32 @@
+.dress-code-section {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+}
+
+.dress-code-image {
+  display: block;
+  max-width: 95%;
+  max-height: 95vh;
+  max-height: 95svh;
+  object-fit: contain;
+}
+
+.dress-code-split {
+  width: 100%;
+  min-height: calc(100svh - 48px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.dress-code-split img {
+  display: block;
+  width: min(100%, 540px);
+  height: 33svh;
+  object-fit: contain;
+}
