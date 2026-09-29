@@ -12,11 +12,13 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "prepare": "husky"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.3.3",
     "framer-motion": "^13.4.4",
+    "husky": "^9.1.7",
     "next-scratchcard": "^0.0.4",
     "prettier": "^3.9.9",
     "pretty-quick": "^4.2.2",

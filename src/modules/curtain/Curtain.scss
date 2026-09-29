@@ -243,7 +243,9 @@
   transform: translateX(-50%);
   background: rgba(8, 4, 4, 0.82);
   color: #ffe9a3;
-  font: 600 11px/1.2 Georgia, serif;
+  font:
+    600 11px/1.2 Georgia,
+    serif;
   letter-spacing: 0.08em;
   white-space: nowrap;
   cursor: pointer;

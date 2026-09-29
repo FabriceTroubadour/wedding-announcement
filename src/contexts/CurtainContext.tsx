@@ -29,10 +29,24 @@ export function CurtainProvider({
   const [isOpen, setIsOpen] = useState(false)
   const [videoTime, setVideoTime] = useState(0)
   const [isVideoAtEnd, setIsVideoAtEnd] = useState(false)
-  const [completedCardIds, setCompletedCardIds] = useState<Set<string>>(
-    () => new Set(),
-  )
+  const [completedCardIds, setCompletedCardIds] = useState<
+    Set<string>
+  >(() => new Set())
   const cardsCompleted = completedCardIds.size
+
+  useEffect(() => {
+    const previousScrollRestoration = window.history.scrollRestoration
+    const resetScrollPosition = () => window.scrollTo(0, 0)
+
+    window.history.scrollRestoration = 'manual'
+    resetScrollPosition()
+    window.addEventListener('pageshow', resetScrollPosition)
+
+    return () => {
+      window.removeEventListener('pageshow', resetScrollPosition)
+      window.history.scrollRestoration = previousScrollRestoration
+    }
+  }, [])
 
   const completeCard = (cardId: string) => {
     setCompletedCardIds((current) => {
@@ -48,12 +62,13 @@ export function CurtainProvider({
     const html = document.documentElement
     const previousOverflowY = html.style.overflowY
     const canScrollPage = isOpen && isVideoAtEnd
-    const shouldClampAtScratchSection = canScrollPage && cardsCompleted < 3
+    const shouldClampAtScratchSection =
+      canScrollPage && cardsCompleted < 3
 
     html.style.overflowY = canScrollPage ? 'auto' : 'hidden'
 
     const scratchSection = document.querySelector<HTMLElement>(
-      '.scratch-card-section',
+      '.scratch-card-section'
     )
 
     const clampToScratchSection = () => {
@@ -61,9 +76,13 @@ export function CurtainProvider({
         return
       }
 
-      const sectionTop = scratchSection.getBoundingClientRect().top + window.scrollY
+      const sectionTop =
+        scratchSection.getBoundingClientRect().top + window.scrollY
       const sectionBottom = sectionTop + scratchSection.offsetHeight
-      const maxScrollY = Math.max(0, sectionBottom - window.innerHeight)
+      const maxScrollY = Math.max(
+        0,
+        sectionBottom - window.innerHeight
+      )
 
       if (window.scrollY > maxScrollY) {
         window.scrollTo(0, maxScrollY)
@@ -71,7 +90,9 @@ export function CurtainProvider({
     }
 
     if (shouldClampAtScratchSection) {
-      window.addEventListener('scroll', clampToScratchSection, { passive: true })
+      window.addEventListener('scroll', clampToScratchSection, {
+        passive: true,
+      })
     }
 
     return () => {

@@ -9,10 +9,7 @@ const Curtain: React.FC = () => {
 
   return (
     <>
-      <div
-        className={`stage ${isOpen ? 'open' : ''}`}
-        id="stage"
-      >
+      <div className={`stage ${isOpen ? 'open' : ''}`} id="stage">
         <div className="content">
           <Video isCurtainOpen={isOpen} />
         </div>

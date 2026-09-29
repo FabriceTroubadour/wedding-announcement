@@ -1,4 +1,8 @@
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+} from 'framer-motion'
 import CenterText from '../../components/centeredText/CenterText'
 import ScratchCardWidget from '../../components/scratchCard/ScratchCardWidget'
 import ScrollReveal from '../../components/scrollReveal/ScrollReveal'
@@ -24,14 +28,18 @@ const ScratchCards = () => {
           transition={transition}
           aria-labelledby="invitation-title"
         >
-          <p className="invitation-eyebrow text-white">Save the date</p>
+          <p className="invitation-eyebrow text-white">
+            Save the date
+          </p>
           <h1 id="invitation-title" className="invitation-title">
             You're invited
           </h1>
           <p className="invitation-date">24 December 2027</p>
-          <p className="invitation-copy">Join us for a day of celebration.</p>
+          <p className="invitation-copy">
+            Join us for a day of celebration.
+          </p>
         </motion.section>
-      ) : ( 
+      ) : (
         <motion.div
           key="scratch-cards"
           className="scratch-card-date"
@@ -39,7 +47,9 @@ const ScratchCards = () => {
           transition={transition}
         >
           <h2 className="scratch-card-heading">Reveal the date</h2>
-          <h3 className="scratch-card-heading-small">Scratch the cards</h3>
+          <h3 className="scratch-card-heading-small">
+            Scratch the cards
+          </h3>
           <ScrollReveal
             childComponent={
               <div>

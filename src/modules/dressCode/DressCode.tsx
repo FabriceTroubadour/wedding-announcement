@@ -41,4 +41,4 @@ const DressCode = () => {
   )
 }
 
-export default DressCode 
+export default DressCode
