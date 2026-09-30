@@ -7,7 +7,7 @@ import DressCode from './modules/dressCode/DressCode'
 import ScratchCards from './modules/scratchCards/ScratchCards'
 
 function App() {
-  const { cardsCompleted } = useCurtain()
+  const { videoTime } = useCurtain()
 
   return (
     <>
@@ -16,7 +16,7 @@ function App() {
         <Curtain />
       </div>
 
-      {cardsCompleted === 3 && (
+      {videoTime <= 13 && (
         <>
           <div
             className="scratch-card-section"
