@@ -1,6 +1,6 @@
 import { ScratchCard } from 'next-scratchcard'
 import GoldenTicket from '../../media/images/golden-scratch.jpg'
-import useWindowSize from '../../utilities/useWindowSize'
+import useWindowSize from '../../utilities/customHooks/useWindowSize'
 
 const LANDSCAPE_CARD_ASPECT_RATIO = 1.45
 const MAX_CARD_WIDTH = 600

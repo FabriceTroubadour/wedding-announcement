@@ -1,4 +1,4 @@
-import useWindowSize from '../../utilities/useWindowSize'
+import useWindowSize from '../../utilities/customHooks/useWindowSize'
 import DressCodeFull from '../../media/images/dress-code.png'
 import DressCodeTitle from '../../media/images/dress-code-title.png'
 import ManWomanDressCode from '../../media/images/man-woman-dress-code.png'

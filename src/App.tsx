@@ -5,6 +5,7 @@ import goldenScratchImage from './media/images/golden-scratch.jpg'
 import Curtain from './modules/curtain/Curtain'
 import DressCode from './modules/dressCode/DressCode'
 import ScratchCards from './modules/scratchCards/ScratchCards'
+import { VideoTime } from './utilities/enums/VideoType'
 
 function App() {
   const { videoTime } = useCurtain()
@@ -16,7 +17,7 @@ function App() {
         <Curtain />
       </div>
 
-      {videoTime >= 13 && (
+      {videoTime >= VideoTime.MaxTime && (
         <>
           <div
             className="scratch-card-section"

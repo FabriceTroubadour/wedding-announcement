@@ -1,5 +1,5 @@
 import { useCurtain } from '../../contexts/CurtainContext'
-import useWindowSize from '../../utilities/useWindowSize'
+import useWindowSize from '../../utilities/customHooks/useWindowSize'
 import Confetti from 'react-confetti'
 
 const ConfettiFullScreen = () => {
