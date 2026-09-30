@@ -16,7 +16,7 @@ function App() {
         <Curtain />
       </div>
 
-      {videoTime <= 13 && (
+      {videoTime >= 13 && (
         <>
           <div
             className="scratch-card-section"
